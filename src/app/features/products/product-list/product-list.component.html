@@ -1,0 +1,5 @@
+<div class="products__list">
+  @for (product of products(); track product.id) {
+    <app-product-card [class.product__card--main]="product.isMain" [product]="product" />
+  }
+</div>

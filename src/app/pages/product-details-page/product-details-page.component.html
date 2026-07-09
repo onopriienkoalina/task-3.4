@@ -1,0 +1,101 @@
+@if (product(); as product) {
+  <section class="product__details">
+    <div class="product__details-gallery">
+      <div class="product__details-carousel">
+        <button
+          type="button"
+          class="product__details-arrow"
+          aria-label="Previous"
+          (click)="showPreviousImage(product.galleryImages)"
+        >
+          <img class="product__details-arrow-icon" src="/slider-arrow-up.svg" alt="Previous" />
+        </button>
+        <div class="product__details-carousel-images">
+          @for (image of product.galleryImages; track image) {
+            <button
+              type="button"
+              class="product__details-carousel-button"
+              [class.product__details-carousel-button--active]="currentImage() === image"
+              [attr.aria-label]="'Show image ' + ($index + 1) + ' of ' + product.title"
+              (click)="selectImage(image)"
+            >
+              <img
+                [src]="image"
+                [alt]="product.title + ' image ' + ($index + 1)"
+                class="product__details-carousel-img"
+              />
+            </button>
+          }
+        </div>
+        <button
+          type="button"
+          class="product__details-arrow"
+          aria-label="Next"
+          (click)="showNextImage(product.galleryImages)"
+        >
+          <img class="product__details-arrow-icon" src="/slider-arrow-down.svg" alt="Next" />
+        </button>
+      </div>
+      <img [src]="currentImage()" [alt]="product.title" class="product__details-img" />
+    </div>
+    <div class="product__details-info">
+      <h1 class="product__details-title">{{ product.title }}</h1>
+      <img class="product__details-rating product__rating" [src]="product.rating" alt="rating" />
+      <div class="product__details-price-container">
+        @if (product.oldPrice) {
+          <span class="product__details-old-price product__old-price">{{
+            product.oldPrice | currency: 'EUR'
+          }}</span>
+        }
+        <p class="product__details-price product__price">{{ product.price | currency: 'EUR' }}</p>
+        @if (product.discountPercent) {
+          <p class="product__details-discount product__discount">{{ product.discountPercent }}%</p>
+        }
+      </div>
+      <p class="product__details-description product__description">{{ product.description }}</p>
+      <div class="product__details-action">
+        <div class="product__details-counter">
+          <button
+            type="button"
+            class="product__details-counter-button"
+            aria-label="Decrease"
+            [disabled]="quantity() === 1"
+            (click)="decreaseQuantity()"
+          >
+            −
+          </button>
+          <span class="product__details-counter-quantity">{{ quantity() }}</span>
+          <button
+            type="button"
+            class="product__details-counter-button"
+            aria-label="Increase"
+            (click)="increaseQuantity()"
+          >
+            +
+          </button>
+        </div>
+        <button
+          type="button"
+          class="product__details-add-to-cart product__add-to-cart"
+          [attr.aria-label]="'Add ' + quantity() + ' of ' + product.title + ' to cart'"
+          (click)="addToCart()"
+        >
+          Add to Cart
+          <img
+            class="product__details-add-to-cart-icon"
+            src="/add-to-cart-hover.svg"
+            alt="Add to Cart"
+          />
+        </button>
+        <button
+          class="product__details-wishlist-button"
+          [attr.aria-label]="'Add ' + product.title + ' to wishlist'"
+        >
+          <img class="product__details-wishlist-icon" src="/wishlist.svg" alt="Add to Wishlist" />
+        </button>
+      </div>
+    </div>
+  </section>
+} @else {
+  <p>Product not found</p>
+}

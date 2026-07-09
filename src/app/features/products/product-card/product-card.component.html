@@ -1,0 +1,41 @@
+<div
+  class="product__card"
+  [class.product__card--main]="product().isMain"
+  [class.product-card--discount-70]="product().discountPercent === 70"
+  [class.product-card--discount-60]="product().discountPercent === 60"
+  [class.product-card--discount-50]="product().discountPercent === 50"
+>
+  @if (product().discountPercent) {
+    <p class="product__discount">{{ product().discountPercent }}%</p>
+  }
+  <img class="product__image" [src]="product().imageUrl" alt="{{ product().title }}" />
+  <div class="product__content">
+    <div class="product__text-contant">
+      <h2 class="product__name">{{ product().title }}</h2>
+      <p class="product__description">{{ product().description | truncate: 35 }}</p>
+      <p class="product__price">
+        {{ product().price | currency: 'EUR' }}
+        @if (product().oldPrice) {
+          <span class="product__old-price">{{ product().oldPrice | currency: 'EUR' }}</span>
+        }
+      </p>
+      <img class="product__rating" [src]="product().rating" alt="rating" />
+    </div>
+    <div class="product__button-container">
+      <button
+        type="button"
+        class="product__button"
+        [attr.aria-label]="'Add ' + product().title + ' to cart'"
+        (click)="addToCart()"
+      ></button>
+    </div>
+    <button
+      type="button"
+      class="product__button--details"
+      [routerLink]="['/products', product().id]"
+      [attr.aria-label]="'View details for ' + product().title"
+    >
+      <img class="product__button-icon" src="/details.svg" alt="View details" />
+    </button>
+  </div>
+</div>

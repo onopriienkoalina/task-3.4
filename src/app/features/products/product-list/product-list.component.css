@@ -1,0 +1,8 @@
+.products__list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.product__card--main {
+  grid-row: span 2;
+}

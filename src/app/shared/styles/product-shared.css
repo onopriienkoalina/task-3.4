@@ -1,0 +1,36 @@
+.product__discount {
+  font-size: 14px;
+  color: #fff;
+  background-color: #ea4b48;
+  padding: 3px 8px;
+  max-width: 80px;
+  border-radius: 4px;
+  position: absolute;
+}
+.product__image {
+  width: 260px;
+  height: auto;
+}
+.product__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+.product__name {
+  color: #4d4d4d;
+  font-size: 14px;
+}
+.product__price {
+  font-weight: 500;
+}
+.product__old-price {
+  color: #999999;
+  text-decoration: line-through;
+}
+.product__description {
+  margin: 4px 0;
+  color: #666666;
+  font-size: 13px;
+  line-height: 1.4;
+}

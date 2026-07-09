@@ -1,0 +1,112 @@
+.product__card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e6e6e6;
+  height: 100%;
+  padding: 16px;
+  position: relative;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+.product__card:hover {
+  cursor: pointer;
+  border: 1px solid #2c742f;
+  box-shadow: 0 0 12px 0 rgba(32, 181, 38, 0.3);
+}
+.product__card:hover .product__button-icon {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.product-card--discount-70 {
+  border: 1px solid #ea4b48;
+}
+.product-card--discount-60 {
+  border: 1px solid #e43694;
+}
+.product-card--discount-50 {
+  border: 1px solid orange;
+}
+.product-card--discount-70 .product__discount {
+  background-color: #ea4b48;
+}
+.product-card--discount-60 .product__discount {
+  background-color: #e43694;
+}
+.product-card--discount-50 .product__discount {
+  background-color: orange;
+}
+.product__card--main {
+  padding: 24px 16px;
+}
+.product__card--main {
+  padding: 24px 16px;
+}
+.product__card--main .product__discount {
+  font-size: 24px;
+  padding: 23px 38px;
+  max-width: 280px;
+  margin-top: 50px;
+  margin-left: 20px;
+}
+.product__card--main .product__image {
+  max-width: 350px;
+  height: auto;
+  margin-top: 158px;
+  margin-bottom: 32px;
+  object-fit: cover;
+}
+.product__card--main .product__content {
+  padding-bottom: 50px;
+}
+.product__card--main .product__name {
+  font-size: 28px;
+}
+.product__card--main .product__description {
+  margin: 40px 0;
+  font-size: 23px;
+  line-height: 1.4;
+}
+.product__card--main .product__price {
+  font-weight: 700;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+.product__card--main .product__rating {
+  min-width: 100px;
+}
+.product__button-container {
+  flex-shrink: 0;
+}
+.product__card--main .product__button {
+  width: 60px;
+  height: 60px;
+}
+.product__button {
+  width: 44px;
+  height: 44px;
+  background-image: url('/cart.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 44px 44px;
+  transition: transform 0.3s ease;
+}
+.product__button:hover {
+  background-image: url('/add-to-cart-hover.svg');
+  border-radius: 50%;
+}
+.product__button-icon {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    visibility 0.2s ease;
+}
